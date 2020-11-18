@@ -12,16 +12,13 @@ import java.util.Map;
 public class UserService {
     private final JdbcTemplate jdbcTemplate;
 
-//    public User userDetails(User user) {
-//        return user;
-//    }
+
     public Map<String, Object> save(Map<String, Object> user) {
         jdbcTemplate.update("insert into USER_DETAILS(username, mobilenumber, gender) values(?,?,?)",
                 user.get("userName"),
                 user.get("mobileNumber"),
                 user.get("gender"));
 
-        //user.put("studentID", hMap.get("studentID"));
         return user;
 
     }
