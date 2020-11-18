@@ -16,8 +16,7 @@ public class UserService {
 //        return user;
 //    }
     public Map<String, Object> save(Map<String, Object> user) {
-        Map<String, Object> hMap = jdbcTemplate.queryForMap("insert into USER_DETAILS(userid, username, mobilenumber, gender) values(?,?,?,?)",
-                Long.parseLong((String) user.get("userId")),
+        jdbcTemplate.update("insert into USER_DETAILS(username, mobilenumber, gender) values(?,?,?)",
                 user.get("userName"),
                 user.get("mobileNumber"),
                 user.get("gender"));
