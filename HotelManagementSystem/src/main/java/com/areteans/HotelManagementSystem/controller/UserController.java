@@ -1,20 +1,20 @@
 package com.areteans.HotelManagementSystem.controller;
 
-import com.areteans.HotelManagementSystem.models.User;
 import com.areteans.HotelManagementSystem.service.UserService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "user")
 public class UserController {
+    @Autowired
     private final UserService userService;
-
 
 
     @PostMapping(path = "details" , consumes = MediaType.APPLICATION_JSON_VALUE)

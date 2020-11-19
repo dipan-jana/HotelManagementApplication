@@ -1,15 +1,10 @@
 package com.areteans.HotelManagementSystem.service;
 
-import com.areteans.HotelManagementSystem.models.User;
-
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,8 +30,11 @@ public class UserService {
 
     }
 
-//    public User getUserBYId (int userId) {
-//
-//        return userRepo.findById(userId);
- //   }
+    public int updateTable(String userName, int userId) {
+
+        String sql = "UPDATE USER_DETAILS SET username =?, WHERE userid =? values(?,?)";
+        int numberofRowsEffected = jdbcTemplate.update(sql, userName, userId);
+        return numberofRowsEffected;
+    }
+
 }
