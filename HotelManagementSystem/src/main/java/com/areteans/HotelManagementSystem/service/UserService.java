@@ -1,7 +1,7 @@
 package com.areteans.HotelManagementSystem.service;
 
 import com.areteans.HotelManagementSystem.models.User;
-import com.areteans.HotelManagementSystem.userRepo.UserRepo;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,8 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    UserRepo userRepo;
+
     private final JdbcTemplate jdbcTemplate;
 
 
@@ -30,12 +29,14 @@ public class UserService {
         return user;
 
     }
-    public List getData(String userId) {
-        List<Map<String, Object>> userList = jdbcTemplate.queryForList("select * from USER_DETAILS where userid = ?", userId);
-        return userList;
+
+    public Map<String, Object> getData(int userId) {
+       return jdbcTemplate.queryForMap("select * from USER_DETAILS where userid = ?" , userId);
+
     }
 
-    public User getUserBYId (int userId) {
-        return userRepo.findById(userId);
-    }
+//    public User getUserBYId (int userId) {
+//
+//        return userRepo.findById(userId);
+ //   }
 }

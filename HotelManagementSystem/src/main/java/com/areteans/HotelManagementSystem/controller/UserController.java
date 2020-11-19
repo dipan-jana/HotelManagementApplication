@@ -21,9 +21,11 @@ public class UserController {
     public Map<String, Object> details(@RequestBody Map user) {
         return userService.save(user);
     }
+
     @GetMapping(path = "data" , consumes = MediaType.APPLICATION_JSON_VALUE)
-    public User getUser(@RequestBody int userId) {
-        return this.userService.getUserBYId(userId);
+    public Map<String, Object> getUser(@RequestParam(value = "userId") int userId ) {
+
+        return this.userService.getData(userId);
     }
 
 
