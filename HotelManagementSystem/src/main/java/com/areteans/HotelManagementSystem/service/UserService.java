@@ -30,11 +30,21 @@ public class UserService {
 
     }
 
-    public int updateTable(String userName, int userId) {
+   public Map<String, Object> updateTable(Map<String, Object> user) {
 
-        String sql = "UPDATE USER_DETAILS SET username =?, WHERE userid =? values(?,?)";
-        int numberofRowsEffected = jdbcTemplate.update(sql, userName, userId);
-        return numberofRowsEffected;
+        jdbcTemplate.update("UPDATE USER_DETAILS SET username =?, mobilenumber =?, gender=? WHERE userid =?",
+                user.get("userName"),
+                user.get("mobileNumber"),
+                user.get("gender"),
+                Long.parseLong((String) user.get("userid")));
+        return user;
+
     }
+
+    public void deleteRecord(int userId) {
+        jdbcTemplate.update("DELETE FROM USER_DETAILS WHERE userid=?", userId);
+    }
+
+
 
 }

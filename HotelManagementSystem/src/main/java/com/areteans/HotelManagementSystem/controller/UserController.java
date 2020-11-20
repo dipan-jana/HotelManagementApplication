@@ -22,11 +22,27 @@ public class UserController {
         return userService.save(user);
     }
 
+
     @GetMapping(path = "data" , consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> getUser(@RequestParam(value = "userId") int userId ) {
 
         return this.userService.getData(userId);
     }
+
+    @PutMapping(path = "update" , consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateRecord(@RequestBody Map<String, Object> user) {
+        userService.updateTable(user);
+    }
+
+
+    @DeleteMapping(value = "delete/{userId}")
+
+    public void deleteDetail(@PathVariable("userId") int userId) {
+        userService.deleteRecord(userId);
+    }
+
+
+
 
 
 }
