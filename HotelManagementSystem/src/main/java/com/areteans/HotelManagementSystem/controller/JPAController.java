@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "jpa")
 public class JPAController {
 
-    @Autowired
     private final JPAService jpaService;
 
     @PostMapping(path = "insertjpa" , consumes = MediaType.APPLICATION_JSON_VALUE)

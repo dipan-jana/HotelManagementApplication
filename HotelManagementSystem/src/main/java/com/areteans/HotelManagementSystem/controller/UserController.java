@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping(path = "user")
 public class UserController {
-    @Autowired
+
     private final UserService userService;
 
 
