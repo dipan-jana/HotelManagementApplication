@@ -1,10 +1,14 @@
 package com.areteans.HotelManagementSystem.service;
 
+import com.areteans.HotelManagementSystem.models.User;
+import com.areteans.HotelManagementSystem.models.UserJPA;
+import com.areteans.HotelManagementSystem.userRepo.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -12,6 +16,7 @@ public class UserService {
 
 
     private final JdbcTemplate jdbcTemplate;
+    private final UserRepo userRepo;
 
 
     public Map<String, Object> save(Map<String, Object> user) {
@@ -44,6 +49,23 @@ public class UserService {
     public void deleteRecord(int userId) {
         jdbcTemplate.update("DELETE FROM USER_DETAILS WHERE userid=?", userId);
     }
+
+//    public UserJPA putUser(UserJPA user){
+//        return userRepo.save(user);
+//    }
+//
+//    public UserJPA getUserByID(Long userid) {
+//        Optional<UserJPA> usd = userRepo.findById(userid);
+//        // isPresent() returns a boolean value whether id is present or not!!
+//        return usd.orElse(null);
+//    }
+//
+//    public void deleteJPARecord(long userid){
+//        userRepo.deleteById(userid);
+//    }
+
+
+
 
 
 

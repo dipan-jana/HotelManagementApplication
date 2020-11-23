@@ -1,7 +1,10 @@
-//package com.areteans.HotelManagementSystem.userRepo;
-//
-//import org.springframework.data.repository.CrudRepository;
-//
-//public interface UserRepo extends CrudRepository {
-//
-//}
+package com.areteans.HotelManagementSystem.userRepo;
+
+import com.areteans.HotelManagementSystem.models.UserJPA;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepo extends JpaRepository<UserJPA, Long> {
+
+
+}
