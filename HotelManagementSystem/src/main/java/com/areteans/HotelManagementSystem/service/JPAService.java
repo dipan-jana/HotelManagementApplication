@@ -12,7 +12,7 @@ import java.util.Optional;
 public class JPAService {
     private final UserRepo userRepo;
 
-    public UserJPA putUser(UserJPA user){
+    public UserJPA putUser(UserJPA user) {
         return userRepo.save(user);
     }
 
@@ -22,8 +22,7 @@ public class JPAService {
         return usd.orElse(null);
     }
 
-    public void deleteJPARecord(long userid){
+    public void deleteUserJPARecord(long userid) {
         userRepo.deleteById(userid);
     }
-
 }

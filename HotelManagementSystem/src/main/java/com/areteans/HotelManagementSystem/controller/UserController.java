@@ -43,24 +43,5 @@ public class UserController {
 
         userService.deleteRecord(userId);
     }
-
-//    @PostMapping(path = "insertjpa" , consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public UserJPA createUser(@RequestBody UserJPA user) {
-//        return userService.putUser(user);
-//    }
-//
-//    @GetMapping(path = "getdata" , consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public UserJPA getData(@RequestParam(value = "userid") long userid) {
-//        return this.userService.getUserByID(userid);
-//    }
-//    @DeleteMapping(value = "deleteuser/{userid}")
-//    public void deleteUser(@PathVariable("userid") long userid) {
-//        userService.deleteJPARecord(userid);
-//    }
-
-
-
-
-
-
+    
 }

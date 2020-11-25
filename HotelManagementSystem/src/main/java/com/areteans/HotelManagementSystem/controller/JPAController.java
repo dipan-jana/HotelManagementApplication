@@ -1,9 +1,7 @@
 package com.areteans.HotelManagementSystem.controller;
-
 import com.areteans.HotelManagementSystem.models.UserJPA;
 import com.areteans.HotelManagementSystem.service.JPAService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +21,9 @@ public class JPAController {
     public UserJPA getData(@RequestParam(value = "userid") long userid) {
         return this.jpaService.getUserByID(userid);
     }
+
     @DeleteMapping(value = "deleteuser/{userid}")
     public void deleteUser(@PathVariable("userid") long userid) {
-        jpaService.deleteJPARecord(userid);
+        jpaService.deleteUserJPARecord(userid);
     }
 }
