@@ -20,8 +20,8 @@ public class BookingJPAService {
         return optionalHotelJPA.orElse(null);
     }
 
-    public BookingJPA createBooking(BookingJPA bookingJPA) {
-        return bookRepo.save(b);
-    }
+//    public BookingJPA createBooking(BookingJPA bookingJPA) {
+//        return bookRepo.save(b);
+//    }
 
 }
