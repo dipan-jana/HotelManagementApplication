@@ -1,33 +1,30 @@
 package com.areteans.HotelManagementSystem.service;
 
-import com.areteans.HotelManagementSystem.models.Booking;
-import lombok.AllArgsConstructor;
+
+import com.areteans.HotelManagementSystem.models.UserJPA;
+import com.areteans.HotelManagementSystem.repository.BookingRepository;
+import com.areteans.HotelManagementSystem.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class BookingService {
-    private final JdbcTemplate jdbcTemplate;
 
-    public Booking create(Booking booking) {
-        Map<String, Object> userMap = jdbcTemplate.queryForMap("insert into USER_DETAILS(username, mobilenumber, gender) values(?,?,?) returning userid, username, mobilenumber",
-                booking.getUser().getUserId(),
-                booking.getUser().getUserName(),
-                booking.getUser().getMobileNumber(),
-                booking.getUser().getGender());
 
-        jdbcTemplate.update("insert into BOOKING_DETAILS (bookingid,bookingstatus,hotelid,hotelname,city)values(?,?,?,?,?) ",
-                booking.getBookingId(),
-                booking.getBookingStatus(),
-                userMap.get("userId"),
-                userMap.get("userName"),
-                userMap.get("mobileNumber"),
-                userMap.get("gender"));
-        return booking;
-    }
+
+
+//    private final BookingRepository bookingRepository;
+//    private final UserRepo userRepo;
+//
+//    public Booking createBooking(Booking booking) {
+//        return bookingRepository.create(booking);
+//    }
+
+
+
 }

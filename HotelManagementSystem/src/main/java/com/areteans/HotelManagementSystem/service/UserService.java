@@ -1,14 +1,11 @@
 package com.areteans.HotelManagementSystem.service;
 
-import com.areteans.HotelManagementSystem.models.User;
-import com.areteans.HotelManagementSystem.models.UserJPA;
-import com.areteans.HotelManagementSystem.userRepo.UserRepo;
+import com.areteans.HotelManagementSystem.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,11 +28,11 @@ public class UserService {
     }
 
     public Map<String, Object> getData(int userId) {
-       return jdbcTemplate.queryForMap("select * from USER_DETAILS where userid = ?" , userId);
+        return jdbcTemplate.queryForMap("select * from USER_DETAILS where userid = ?", userId);
 
     }
 
-   public Map<String, Object> updateTable(Map<String, Object> user) {
+    public Map<String, Object> updateTable(Map<String, Object> user) {
 
         jdbcTemplate.update("UPDATE USER_DETAILS SET username =?, mobilenumber =?, gender=? WHERE userid =?",
                 user.get("userName"),
@@ -49,6 +46,25 @@ public class UserService {
     public void deleteRecord(int userId) {
         jdbcTemplate.update("DELETE FROM USER_DETAILS WHERE userid=?", userId);
     }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    public UserJPA putUser(UserJPA user){
 //        return userRepo.save(user);
@@ -66,7 +82,3 @@ public class UserService {
 
 
 
-
-
-
-}

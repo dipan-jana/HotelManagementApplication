@@ -1,15 +1,16 @@
 package com.areteans.HotelManagementSystem.service;
 
 import com.areteans.HotelManagementSystem.models.UserJPA;
-import com.areteans.HotelManagementSystem.userRepo.UserRepo;
+import com.areteans.HotelManagementSystem.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class JPAService {
+public class UserJPAService {
     private final UserRepo userRepo;
 
     public UserJPA putUser(UserJPA user) {
@@ -24,5 +25,11 @@ public class JPAService {
 
     public void deleteUserJPARecord(long userid) {
         userRepo.deleteById(userid);
+    }
+
+    public UserJPA getData(long userid) {
+        Optional<UserJPA> optional = userRepo.getUserDetails(userid);
+        return optional.get();
+
     }
 }
