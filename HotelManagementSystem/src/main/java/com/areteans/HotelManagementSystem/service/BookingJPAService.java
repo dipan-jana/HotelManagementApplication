@@ -20,17 +20,8 @@ public class BookingJPAService {
         return optionalHotelJPA.orElse(null);
     }
 
-    public BookingJPA createBooking(long hotelid, long userid) {
-
-        BookingJPA bookingJPA = new BookingJPA();
-        HotelJPA hotelJPA = getHotelAttributes(hotelid);
-        bookingJPA.setHotelid(hotelid);
-        bookingJPA.setHotelname(hotelJPA.getHotelName());
-        bookingJPA.setCity(hotelJPA.getCity());
-        bookingJPA.setUserid(userid);
-
-        return bookRepo.save(bookingJPA);
-
+    public BookingJPA createBooking(BookingJPA bookingJPA) {
+        return bookRepo.save(b);
     }
 
 }
