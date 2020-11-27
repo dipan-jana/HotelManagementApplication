@@ -6,7 +6,6 @@ import com.areteans.HotelManagementSystem.repository.BookRepo;
 import com.areteans.HotelManagementSystem.repository.HotelRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
@@ -20,8 +19,19 @@ public class BookingJPAService {
         return optionalHotelJPA.orElse(null);
     }
 
-    public BookingJPA createBooking(BookingJPA bookingJPA) {
-        return bookRepo.save(b);
+    public BookingJPA createBooking(Long hotelid, Long userid) {
+
+        BookingJPA bookingJPA = new BookingJPA();
+        HotelJPA hotelJPA = getHotelAttributes(hotelid);
+        bookingJPA.setHotelid(hotelid);
+        bookingJPA.setHotelname(hotelJPA.getHotelName());
+        bookingJPA.setUserid(userid);
+        bookingJPA.setCity(hotelJPA.getCity());
+        bookingJPA.setBookingStatus(bookingJPA.getBookingStatus());
+
+        return bookRepo.save(bookingJPA);
+
+
     }
 
 }

@@ -11,5 +11,4 @@ public class Booking {
     private long bookingId;
     private String bookingStatus;
     private User user;
-
 }

@@ -14,13 +14,4 @@ import java.util.Optional;
 
 @Repository
 public interface BookRepo extends JpaRepository<BookingJPA, Long> {
-
-
-//    @Query(value = "INSERT into BOOKING_DETAILS (hotelid, userid, hotelname, city, bookingstatus) " +
-//           "values (:hotelid,:userid,:hotelname,:city,:bookingstatus)", nativeQuery = true)
-//    @Modifying
-//    @Transactional
-//    Optional<BookingJPA> createBookingDetails(@Param("hotelid") long hotelid, @Param("userid") long userid, "hotelname", "city", "bookingstatus") ,
-//                                              , String hotelname, String city, String bookingstatus);
-
 }
