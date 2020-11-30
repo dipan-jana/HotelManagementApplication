@@ -1,0 +1,101 @@
+HOTEL MANAGEMENT APPLICATION
+
+
+                                                        CONTROLLER CLASS
+
+Booking Controller
+
+                putBooking() - puts data in Booking Table.
+                viewBooking() - view Booking Details with the help of Booking ID.
+                deleteBooking() - delete Booking Record with the help of Booking ID.
+
+User JPA Controller
+
+                createUser() - puts data of User in the User Table of the Database.
+                getUserData() - view User Data with the help of User ID.
+                deleteUser() - delete User Data with the help of User ID.
+
+Hotel Controller
+
+                createHotel() - creates a new hotel with the data for the Hotel Table.
+                getHotelData() - view the hotel details with the help of the Hotel ID.
+                deleteHotel() - deletes a data of the hotel for a particular Hotel ID entered.
+
+
+                                                         SERVICE CLASS
+
+Booking JPA Service
+
+                getHotelAttributes() - fetches the hotel attributes from the hotel table, so that we can put it in the booking table.
+
+                createBooking() - set the hotelID, hotelName, city, bookingStatus to the Booking Table using save() of the
+                                  CRUDRepository and this method is connected to the putBooking() in Booking Controller.
+
+                viewBookingById() - calling the FindByID() from the CRUDRepository and fetching the Booking Details from the Booking Table
+                                    and this method is connected to the viewBooking() in the Booking Controller.
+
+                deleteBookingRecord() - calling the deleteByID() from the CRUDRepository and deleting the Booking Details for a particular
+                                        Booking ID from the Booking Table and this method is connected to the
+                                        deleteBooking() in the Booking Controller.
+
+User JPA Service
+
+                putUser() - with the help of save() of the CRUDRepository we are putting the details of the User in the User Table,
+                            this method is connected to the createUser() of the User JPA Controller.
+
+                getUserById() - by calling the FindByID() from the CRUDRepository we are displaying the User Details for a
+                                particular User ID, this method is connected to the getUserData() in the User JPA Controller.
+
+                deleteUserJPARecord() - by calling the deleteByID() from the CRUDRepository we are deleting the records for a particular
+                                        User in the User Table and this method is connected to the deleteUser() in the User JPA Controller.
+
+
+Hotel JPA Service
+
+                putHotel() - with the help of save() of the CRUDRepository we are putting the Hotel Data in the
+                             Hotel Table and this method is connected to the createHotel() in the Hotel Controller.
+
+                getHotelById() - we are using the FindById() from the CRUDRepository and fetching the Hotel Details for a
+                                 particular Hotel with the help of Hotel ID, method is connected to the getHotelData() in
+                                 the Hotel Controller.
+
+                deleteHotelRecord() - deleteByID() from the CRUDRepository is used to delete the Hotel Records from the Hotel Table
+                                      according to the Hotel ID entered.
+
+
+                                                            MODELS
+
+
+Booking JPA - contains the attributes of the Booking Table
+
+              1) Long bookingid (Primary Key and Big Serial type)
+              2) Long hotelid (Foreign Key)
+              3) Long userid (Foreign Key)
+              4) String hotelname
+              5) String city
+              6) String bookingstatus
+
+User JPA - contains the attributes of the User Table
+
+            1) Long userid
+            2) String username
+            3) String mobilenumber
+            4) String gender
+
+Hotel JPA - contains the attributes of the Hotel Table
+
+            1) Long hotelid (Primary Key and Big Serial Type)
+            2) String city
+            3) String hotelname
+            4) int rooms
+            5) String landmark
+
+
+                                                            REPOSITORY
+
+
+Book Repo - Repository for Booking which extends the JpaRepository interface.
+
+User Repo - Repository for User which extends the JpaRepository interface.
+
+Hotel Repo - Repository for Hotel which extends the JpaRepository interface.

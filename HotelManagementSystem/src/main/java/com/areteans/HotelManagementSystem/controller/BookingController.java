@@ -1,10 +1,7 @@
 package com.areteans.HotelManagementSystem.controller;
 import com.areteans.HotelManagementSystem.models.BookingJPA;
-import com.areteans.HotelManagementSystem.models.UserJPA;
 import com.areteans.HotelManagementSystem.service.BookingJPAService;
-import com.areteans.HotelManagementSystem.service.BookingService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +15,21 @@ public class BookingController {
     private final BookingJPAService bookingJPAService;
 
     @PostMapping(path = "booking" , consumes = MediaType.APPLICATION_JSON_VALUE)
-    public BookingJPA putBooking(@RequestBody Long userid, Long hotelid) {
-        return bookingJPAService.createBooking(userid, hotelid);
+    public BookingJPA putBooking(@RequestBody Map<String, Long> inputMap) {
+        long userid = inputMap.get("userid");
+        long hotelid = inputMap.get("hotelid");
+        return bookingJPAService.createBooking(hotelid, userid);
     }
+
+    @GetMapping(path = "viewbooking" , consumes = MediaType.APPLICATION_JSON_VALUE)
+    public BookingJPA viewBooking(@RequestParam( value = "bookingid") Long bookingid) {
+        return bookingJPAService.viewBookingByID(bookingid);
+    }
+
+    @DeleteMapping(value = "deletebooking/{bookingid}")
+    public void deleteBooking(@PathVariable("bookingid") Long bookingid) {
+        bookingJPAService.deleteBookingRecord(bookingid);
+
+    }
+
 }

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +18,7 @@ public class HotelJPA {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long hotelid;
     private String city;
-    private String hotelName;
+    private String hotelname;
     private int rooms;
     private String landmark;
 

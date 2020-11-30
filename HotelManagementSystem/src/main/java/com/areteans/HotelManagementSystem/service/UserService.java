@@ -13,7 +13,6 @@ public class UserService {
 
 
     private final JdbcTemplate jdbcTemplate;
-    private final UserRepo userRepo;
 
 
     public Map<String, Object> save(Map<String, Object> user) {

@@ -27,9 +27,16 @@ public class UserJPAService {
         userRepo.deleteById(userid);
     }
 
+
+
+
+    //******* Method For Custom Query *******
+
     public UserJPA getData(long userid) {
         Optional<UserJPA> optional = userRepo.getUserDetails(userid);
         return optional.get();
 
     }
+
+
 }

@@ -24,13 +24,23 @@ public class BookingJPAService {
         BookingJPA bookingJPA = new BookingJPA();
         HotelJPA hotelJPA = getHotelAttributes(hotelid);
         bookingJPA.setHotelid(hotelid);
-        bookingJPA.setHotelname(hotelJPA.getHotelName());
+        bookingJPA.setHotelname(hotelJPA.getHotelname());
         bookingJPA.setUserid(userid);
         bookingJPA.setCity(hotelJPA.getCity());
-        bookingJPA.setBookingStatus(bookingJPA.getBookingStatus());
-
+        bookingJPA.setBookingstatus(bookingJPA.getBookingstatus());
         return bookRepo.save(bookingJPA);
 
+    }
+
+    public BookingJPA viewBookingByID(Long bookingid) {
+        Optional<BookingJPA> bkd = bookRepo.findById(bookingid);
+        return bkd.orElse(null);
+
+    }
+
+    public void deleteBookingRecord(Long bookingid) {
+        bookRepo.deleteById(bookingid);
+        System.out.println("RECORD DELETED FOR BOOKING ID: " + bookingid);
 
     }
 

@@ -1,5 +1,6 @@
 package com.areteans.HotelManagementSystem.models;
 
+import com.areteans.HotelManagementSystem.enums.BookingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,12 +17,15 @@ import javax.persistence.*;
 public class BookingJPA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bookingId;
+    private long bookingid;
     private long hotelid;
     private long userid;
     private String hotelname;
     private String city;
-    private String bookingStatus;
-//    private UserJPA userJPA;
-//    private HotelJPA hotelJPA;
+    private String bookingstatus;
+
+    {
+        bookingstatus = "CONFIRMED";
+    }
+
 }
